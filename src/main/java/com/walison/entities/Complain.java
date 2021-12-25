@@ -2,12 +2,15 @@ package com.walison.entities;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Complain implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	private String id;
 	private String title;
 	private String description;
 	private String locale;
@@ -15,12 +18,21 @@ public class Complain implements Serializable{
 	
 	public Complain() {}
 
-	public Complain(String title, String description, String locale, Company company) {
+	public Complain(String id, String title, String description, String locale, Company company) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.locale = locale;
 		this.company = company;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getTitle() {

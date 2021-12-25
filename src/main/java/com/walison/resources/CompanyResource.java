@@ -19,7 +19,7 @@ import com.walison.entities.Company;
 import com.walison.services.CompanyService;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/companys")
 public class CompanyResource {
 	
 	@Autowired
