@@ -1,36 +1,38 @@
 package com.walison.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.walison.entities.dto.ComplainDTO;
+
 @Document
-public class Company {
-	
+public class Locale implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String id;
 	private String name;
-	private Locale locale;
-	
-	@DBRef(lazy = true)
-	private List<Complain> complains = new ArrayList<>();
-	
-	public Company() {}
+	private String uf;
 	
 	
+	private List<ComplainDTO> complains = new ArrayList<>();
+	
+	
+	public Locale() {
+		super();
+	}
 
-	public Company(String id, String name, Locale locale) {
+	public Locale(String id, String name, String uf) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.locale = locale;
+		this.uf = uf;
 	}
-
-
 
 	public String getId() {
 		return id;
@@ -48,33 +50,22 @@ public class Company {
 		this.name = name;
 	}
 
-	public List<Complain> getComplains() {
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public List<ComplainDTO> getComplains() {
 		return complains;
 	}
-
-	public void setComplains(List<Complain> complains) {
-		this.complains = complains;
-	}
-	
-	public Locale getLocale() {
-		return locale;
-	}
-
-
-
-	public void setLocale(Locale locale) {
-		this.locale = locale;
-	}
-	
-
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -84,13 +75,8 @@ public class Company {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Company other = (Company) obj;
+		Locale other = (Locale) obj;
 		return Objects.equals(id, other.id);
 	}
 
-
-
-	
-	
-	
 }

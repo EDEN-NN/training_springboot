@@ -9,26 +9,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.walison.entities.Complain;
-import com.walison.services.ComplainService;
+import com.walison.entities.Locale;
+import com.walison.services.LocaleService;
 
 @RestController
-@RequestMapping(value = "/api/complains")
-public class ComplainResource {
+@RequestMapping(value = "/api/locale")
+public class LocaleResource {
 	
 	@Autowired
-	ComplainService service;
-	
-	@GetMapping
-	public ResponseEntity<List<Complain>> findAll() {
-		List<Complain> list = service.findAll();
-		return ResponseEntity.ok().body(list);
-	}
+	LocaleService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Complain> findById(@PathVariable String id) {
-		Complain obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<List<Locale>> findByLocale(@PathVariable String id) {
+		List<Locale> list = service.findByLocale(id);
+		return ResponseEntity.ok().body(list);
 	}
 	
 }

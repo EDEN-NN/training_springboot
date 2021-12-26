@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.walison.entities.dto.CompanyDTO;
+
 @Document
 public class Complain implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,12 +15,12 @@ public class Complain implements Serializable{
 	private String id;
 	private String title;
 	private String description;
-	private String locale;
-	private Company company;
+	private Locale locale;
+	private CompanyDTO company;
 	
 	public Complain() {}
 
-	public Complain(String id, String title, String description, String locale, Company company) {
+	public Complain(String id, String title, String description, Locale locale, CompanyDTO company) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -51,19 +53,19 @@ public class Complain implements Serializable{
 		this.description = description;
 	}
 
-	public String getLocale() {
+	public Locale getLocale() {
 		return locale;
 	}
 
-	public void setLocale(String locale) {
+	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 
-	public Company getCompany() {
+	public CompanyDTO getCompany() {
 		return company;
 	}
 
-	public void setCompany(Company company) {
+	public void setCompany(CompanyDTO company) {
 		this.company = company;
 	}
 	
